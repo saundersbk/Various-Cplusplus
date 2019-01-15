@@ -1,0 +1,78 @@
+/* Lab number: 1
+
+   Programmer(s): Brandon Saunders, Linh Dieu
+   
+   Submission Date: 9/2/2017
+   
+   EGRE 246 Fall 2017
+   
+   Pledge: I have neither given nor received unauthorized aid on the program.
+   
+   Description: Create a "Rock, Paper, Scissors" program in C++.
+   
+   */
+
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main() {
+	bool play = true;
+	char playAgain;
+	int choice = 0;
+	int cpu = 0;
+	srand(42);
+	cout << "Rock Paper Scissors!" << endl;
+	cout << endl;
+	do {
+		cpu = (rand() % 3) + 1;
+		cout << "Rock Paper or Scissors? - " << endl;
+		cout << "1 - Rock" << endl;
+		cout << "2 - Paper" << endl;
+		cout << "3 - Scissors" << endl;
+		cout << "choice - ";
+		cin  >> choice;
+		if (choice != 1 && choice != 2 && choice != 3) {
+		do {
+			cout << "Please choose again." << endl;
+			cout << "choice - ";
+			cin  >> choice;
+		}
+		while (choice != 1 && choice != 2 && choice != 3);
+		}
+		if (choice == cpu) {
+			cout << "Tie Game" << endl;
+		}
+		else if (choice == 1 && cpu == 2) {
+			cout << "Loss - Paper beats Rock" << endl;
+		}
+		else if (choice == 1 && cpu == 3) {
+			cout << "Win - Rock beats Scissors" << endl;
+		}
+		else if (choice == 2 && cpu == 1) {
+			cout << "Win - Paper beats Rock" << endl;
+		}
+		else if (choice == 2 && cpu == 3) {
+			cout << "Loss - Scissors beats Paper" << endl;
+		}
+		else if (choice == 3 && cpu == 1) {
+			cout << "Loss - Rock beats Scissors" << endl;
+		}
+		else if (choice == 3 && cpu == 2) {
+			cout << "Win - Scissors beats Paper" << endl;
+		}
+		cout << "Would you like to play again? -Y/N" << endl;
+		cin  >> playAgain;
+		if (playAgain == 'Y' || playAgain == 'y') {
+			play = true;
+		}
+		else {
+			play = false;
+		}
+		
+	}
+	while (play == true);
+	
+	return 0;
+}
